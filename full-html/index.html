@@ -4,28 +4,512 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Componentes HTML</title>
+    <title>Componentes HTML - Demo Completa</title>
     <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 </head>
 
-<body class="bg-slate-50 min-h-screen flex items-center justify-center">
-    <div class="max-w-md w-full bg-white p-8 rounded-2xl shadow-xl">
-        <h1 class="text-2xl font-bold text-slate-900 mb-6 text-center">Componentes Disponibles</h1>
-        <div class="space-y-4">
-            <a href="nav.html"
-                class="block p-4 bg-blue-50 text-blue-700 rounded-xl font-bold hover:bg-blue-100 transition text-center">
-                Ver Navegación
-            </a>
-            <a href="whatsapp-desktop.html"
-                class="block p-4 bg-green-50 text-green-700 rounded-xl font-bold hover:bg-green-100 transition text-center">
-                Ver WhatsApp Desktop
-            </a>
-            <a href="mobile-buttons.html"
-                class="block p-4 bg-slate-100 text-slate-700 rounded-xl font-bold hover:bg-slate-200 transition text-center">
-                Ver Botones Móviles
+<body class="bg-slate-50 min-h-screen pt-20 pb-32">
+
+    <!-- 1. NAVBAR -->
+    <nav
+        class="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-17">
+
+                <a href="#" class="flex items-center gap-1" aria-label="Inicio">
+                    <div class="w-12 h-12 md:w-[72px] md:h-[72px] flex items-center justify-center">
+                        <div
+                            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold">
+                            LOGO</div>
+                    </div>
+                    <div class="flex flex-col justify-center -space-y-0.5">
+                        <span
+                            class="block font-extrabold text-slate-900 text-base md:text-lg leading-none tracking-tight">
+                            NOMBRE<span class="text-blue-600">EMPRESA</span>
+                        </span>
+                        <span class="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                            Región Metropolitana
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
+                    <a href="#inicio" class="hover:text-blue-600 transition-colors">Inicio</a>
+                    <a href="#servicios" class="hover:text-blue-600 transition-colors">Servicios</a>
+                    <a href="#nosotros" class="hover:text-blue-600 transition-colors">Nosotros</a>
+                    <a href="#testimonios" class="hover:text-blue-600 transition-colors">Testimonios</a>
+                    <a href="#faq" class="hover:text-blue-600 transition-colors">Preguntas</a>
+                    <a href="#contacto" class="hover:text-blue-600 transition-colors">Contacto</a>
+
+                    <div class="flex items-center gap-4 ml-4">
+                        <a href="https://wa.me/56912345678"
+                            class="bg-green-600 hover:bg-green-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2">
+                            WhatsApp Contacto
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mobile Toggle -->
+                <div class="flex items-center gap-4 lg:hidden">
+                    <a href="https://wa.me/56912345678"
+                        class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-100 text-slate-900 active:scale-95 transition">
+                        <i class="fa-brands fa-whatsapp text-xl text-green-600"></i>
+                    </a>
+                    <button onclick="openMenu()" aria-label="Abrir menú de navegación"
+                        class="p-2.5 rounded-lg text-slate-900 hover:bg-slate-100 focus:outline-none transition active:scale-95">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 z-[60] invisible opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="closeMenu()"></div>
+
+        <div id="mobile-menu-panel"
+            class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+
+            <div class="px-6 h-20 flex items-center justify-between border-b border-slate-100">
+                <span class="font-extrabold text-slate-900 text-lg tracking-tight">MENÚ</span>
+                <button onclick="closeMenu()" aria-label="Cerrar menú"
+                    class="w-10 h-10 rounded-full bg-slate-50 text-slate-500 hover:bg-red-50 hover:text-red-500 transition flex items-center justify-center">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
+                <a href="#inicio" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Inicio</a>
+                <a href="#servicios" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Servicios</a>
+                <a href="#nosotros" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Nosotros</a>
+                <a href="#testimonios" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Testimonios</a>
+                <a href="#faq" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Preguntas</a>
+                <a href="#contacto" onclick="closeMenu()"
+                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-blue-600 transition">Contacto</a>
+            </div>
+
+            <div class="p-6 border-t border-slate-100 bg-slate-50">
+                <a href="https://wa.me/56912345678"
+                    class="block w-full bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl font-bold text-center transition shadow-lg shadow-green-500/20">
+                    <i class="fa-brands fa-whatsapp mr-2"></i> WhatsApp Urgente
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTENIDO DE EJEMPLO PARA HACER SCROLL -->
+    <div class="container mx-auto px-4 py-12 text-center">
+        <h1 class="text-4xl font-bold text-slate-900 mb-4">Página de Ejemplo</h1>
+        <p class="text-lg text-slate-600 mb-12">Haz scroll para ver los elementos flotantes.</p>
+        <div class="space-y-8">
+            <div
+                class="h-64 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center text-slate-400">
+                Sección 1</div>
+            <div
+                class="h-64 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center text-slate-400">
+                Sección 2</div>
+            <div
+                class="h-64 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center text-slate-400">
+                Sección 3</div>
+            <div
+                class="h-64 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center text-slate-400">
+                Sección 4</div>
+        </div>
+    </div>
+
+    <!-- 2. WHATSAPP DESKTOP -->
+    <div class="wa-floating-btn hidden md:flex" id="wa-btn">
+        <svg class="wa-icon wa-icon-logo" viewBox="0 0 24 24">
+            <path
+                d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.008-.57-.008-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+        </svg>
+        <svg class="wa-icon wa-icon-close" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+        <span class="wa-notification-dot" id="wa-dot">1</span>
+    </div>
+
+    <div class="wa-chat-box" id="whatsapp-chat">
+        <div class="wa-header">
+            <button class="wa-close-btn" id="wa-close-btn">×</button>
+            <div
+                class="w-12 h-12 rounded-full bg-slate-200 mr-4 flex items-center justify-center text-slate-500 font-bold">
+                LOGO</div>
+            <div class="wa-info">
+                <h4>Nombre Empresa</h4>
+                <p>En línea</p>
+            </div>
+        </div>
+        <div class="wa-body">
+            <div class="wa-message">
+                <div class="wa-msg-text">Hola, ¿en qué podemos ayudarte hoy?</div>
+                <span class="wa-time">Justo ahora</span>
+            </div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/56912345678?text=Hola,%20necesito%20m%C3%A1s%20informaci%C3%B3n" target="_blank"
+                class="wa-start-chat-btn">
+                COMENZAR CHAT
             </a>
         </div>
     </div>
+
+    <!-- 3. MOBILE BOTTOM BAR -->
+    <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden flex flex-col shadow-[0_-4px_20px_rgba(0,0,0,0.15)]">
+        <div
+            class="availability-badge w-full bg-green-50 border-t border-green-200 py-1.5 flex items-center justify-center gap-2 text-[11px] font-bold text-green-800">
+            <span class="relative flex h-2 w-2">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            <span>3 Unidades disponibles</span>
+        </div>
+        <div class="bg-white p-3 flex gap-3 border-t border-slate-100">
+            <a href="tel:+56912345678"
+                class="flex-1 bg-blue-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-blue-600/20"
+                aria-label="Llamar ahora">
+                <i class="fa-solid fa-phone animate-pulse"></i> Llamar
+            </a>
+            <a href="https://wa.me/56912345678"
+                class="flex-1 bg-green-600 text-white font-bold rounded-xl py-3 flex items-center justify-center gap-2 active:scale-95 transition shadow-lg shadow-green-500/20"
+                aria-label="WhatsApp">
+                <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --wa-green: #25D366;
+            --wa-dark: #075E54;
+            --wa-red: #ff3b30;
+        }
+
+        .wa-notification-dot {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--wa-red);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+            z-index: 1002;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .wa-notification-dot.show {
+            opacity: 1;
+            transform: scale(1);
+            animation: wa-dot-bounce 1s infinite;
+        }
+
+        @keyframes wa-dot-bounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-4px) scale(1);
+            }
+        }
+
+        .wa-floating-btn {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--wa-green);
+            color: white;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse-green 2s infinite;
+        }
+
+        .wa-floating-btn:not(.active):hover {
+            transform: scale(1.1);
+        }
+
+        .wa-floating-btn.active {
+            background-color: #333;
+            animation: none;
+            transform: rotate(90deg);
+        }
+
+        .wa-icon {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            fill: white;
+            transition: all 0.3s ease;
+        }
+
+        .wa-icon-logo {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .wa-icon-close {
+            opacity: 0;
+            transform: scale(0) rotate(-90deg);
+        }
+
+        .active .wa-icon-logo {
+            opacity: 0;
+            transform: scale(0) rotate(90deg);
+        }
+
+        .active .wa-icon-close {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
+
+        @keyframes pulse-green {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        .wa-chat-box {
+            display: none;
+            position: fixed;
+            bottom: 95px;
+            left: 20px;
+            width: 350px;
+            max-width: 85%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+            overflow: visible;
+            z-index: 1001;
+            flex-direction: column;
+            font-family: 'Segoe UI', sans-serif;
+            animation: slideIn 0.3s ease-out forwards;
+        }
+
+        .wa-chat-box::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wa-header {
+            background-color: var(--wa-green);
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            border-radius: 10px 10px 0 0;
+            position: relative;
+        }
+
+        .wa-close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.8;
+        }
+
+        .wa-info h4 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .wa-info p {
+            margin: 2px 0 0;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .wa-body {
+            background-color: #f0f0f0;
+            padding: 20px;
+            height: 200px;
+            overflow-y: auto;
+        }
+
+        .wa-message {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 0 10px 10px 10px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            width: fit-content;
+            max-width: 80%;
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+        .wa-message::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-top: 10px solid white;
+            border-left: 10px solid transparent;
+        }
+
+        .wa-msg-text {
+            color: #333;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .wa-time {
+            font-size: 10px;
+            color: #999;
+            display: block;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .wa-footer {
+            background: white;
+            padding: 15px;
+            text-align: center;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .wa-start-chat-btn {
+            background-color: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            gap: 8px;
+            transition: background 0.3s;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        // Navbar Scripts
+        window.openMenu = function () {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const panel = document.getElementById('mobile-menu-panel');
+            if (overlay && panel) {
+                overlay.classList.remove('invisible', 'opacity-0');
+                panel.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        window.closeMenu = function () {
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const panel = document.getElementById('mobile-menu-panel');
+            if (overlay && panel) {
+                panel.classList.add('translate-x-full');
+                overlay.classList.add('invisible', 'opacity-0');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // WhatsApp Scripts
+        function toggleChat() {
+            const chat = document.getElementById("whatsapp-chat");
+            const btn = document.getElementById("wa-btn");
+            const dot = document.getElementById("wa-dot");
+
+            if (!chat || !btn) return;
+
+            if (chat.style.display === "none" || !chat.style.display) {
+                chat.style.display = "flex";
+                btn.classList.add("active");
+                if (dot) {
+                    dot.classList.remove("show");
+                    dot.style.display = "none";
+                }
+            } else {
+                chat.style.display = "none";
+                btn.classList.remove("active");
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById("wa-btn");
+            const closeBtn = document.getElementById("wa-close-btn");
+
+            if (btn) btn.addEventListener('click', toggleChat);
+            if (closeBtn) closeBtn.addEventListener('click', toggleChat);
+
+            setTimeout(() => {
+                const chat = document.getElementById("whatsapp-chat");
+                const dot = document.getElementById("wa-dot");
+                if (chat && chat.style.display !== "flex" && dot) {
+                    dot.classList.add("show");
+                }
+            }, 5000);
+        });
+    </script>
+
 </body>
 
 </html>
