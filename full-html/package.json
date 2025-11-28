@@ -1,0 +1,11 @@
+{
+    "name": "full-html-components",
+    "version": "1.0.0",
+    "description": "Componentes HTML con Tailwind CSS compilado",
+    "scripts": {
+        "build": "tailwindcss -i ./input.css -o ./styles.css --minify"
+    },
+    "devDependencies": {
+        "tailwindcss": "^3.4.1"
+    }
+}
