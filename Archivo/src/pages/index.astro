@@ -16,8 +16,7 @@ const latestPosts = (await getCollection('blog'))
 ---
 
 <Layout title="Plantilla Demo Astro">
-    <Hero 
-        id="inicio"
+	<Hero 
         title="Plantilla Demo <br><span class='text-blue-400'>Astro + Tailwind</span>"
         subtitle="Esta es una demostración de cómo estructurar el sitio usando componentes reutilizables para máxima velocidad y mantenibilidad."
         bgImage="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop"
@@ -34,7 +33,6 @@ const latestPosts = (await getCollection('blog'))
     />
 
     <FeatureSection 
-        id="servicios"
         title="Soluciones Profesionales para tu Hogar"
         subtitle="Nos especializamos en resolver problemas complejos con tecnología de punta y personal altamente capacitado."
         image="https://images.unsplash.com/photo-1581094794329-cd1096a7a438?q=80&w=2070&auto=format&fit=crop"
@@ -45,7 +43,7 @@ const latestPosts = (await getCollection('blog'))
             "Garantía por escrito en todos los trabajos"
         ]}
     >
-        <a href="#nosotros" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700 transition-colors">
+        <a href="/nosotros" class="inline-flex items-center font-bold text-blue-600 hover:text-blue-700 transition-colors">
             Conoce más sobre nosotros <i class="fa-solid fa-arrow-right ml-2"></i>
         </a>
     </FeatureSection>
@@ -71,7 +69,6 @@ const latestPosts = (await getCollection('blog'))
     </section>
 
     <FeatureSection 
-        id="nosotros"
         title="Tecnología que Marca la Diferencia"
         subtitle="Utilizamos cámaras de inspección y maquinaria de alta presión para asegurar resultados duraderos."
         image="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=2070&auto=format&fit=crop"
@@ -114,7 +111,6 @@ const latestPosts = (await getCollection('blog'))
     />
 
     <Testimonials 
-        id="testimonios"
         reviews={[
             {
                 name: "María González",
@@ -155,7 +151,6 @@ const latestPosts = (await getCollection('blog'))
     </section>
 
     <FAQ 
-        id="faq"
         title="Preguntas Frecuentes"
         items={[
             {
@@ -174,7 +169,6 @@ const latestPosts = (await getCollection('blog'))
     />
 
     <CallToAction 
-        id="contacto"
         title="¿Tienes una Emergencia?"
         subtitle="Nuestro equipo está listo para ayudarte las 24 horas del día, los 7 días de la semana."
         ctaText="Llamar Ahora"

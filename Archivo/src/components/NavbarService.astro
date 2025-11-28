@@ -27,15 +27,12 @@ const { company } = siteConfig;
 
             <!-- Desktop Menu -->
             <div class="hidden lg:flex items-center gap-8 font-semibold text-slate-600 text-sm">
-                {siteConfig.navLinks.map((link) => (
-                    <a 
-                        href={link.href} 
-                        class="hover:text-primary transition-colors"
-                        target={link.isExternal ? "_blank" : "_self"}
-                    >
-                        {link.text}
-                    </a>
-                ))}
+                <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                <a href="/ejemplo-servicio" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="/ejemplo-zona" class="hover:text-primary transition-colors">Zonas</a>
+                <a href="/blog" class="hover:text-primary transition-colors">Blog</a>
+                <a href="/faq" class="hover:text-primary transition-colors">Ayuda</a>
+                <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
                 
                 <div class="flex items-center gap-4 ml-4">
                     <a href={`https://wa.me/${company.whatsapp}`} class="bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-full font-bold shadow-lg transition hover:-translate-y-0.5 flex items-center gap-2">
@@ -75,16 +72,12 @@ const { company } = siteConfig;
 
         <!-- Links -->
         <div class="flex-1 overflow-y-auto py-6 px-6 space-y-2">
-            {siteConfig.navLinks.map((link) => (
-                <a 
-                    href={link.href} 
-                    onclick="closeMenu()" 
-                    class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition"
-                    target={link.isExternal ? "_blank" : "_self"}
-                >
-                    {link.text}
-                </a>
-            ))}
+            <a href="/" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Inicio</a>
+            <a href="/ejemplo-servicio" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Servicios</a>
+            <a href="/ejemplo-zona" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Zonas</a>
+            <a href="/blog" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Blog</a>
+            <a href="/faq" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Ayuda</a>
+            <a href="/contacto" onclick="closeMenu()" class="block px-4 py-3 rounded-xl font-bold text-slate-800 hover:bg-slate-50 hover:text-primary transition">Contacto</a>
         </div>
 
         <!-- Footer -->
@@ -121,22 +114,5 @@ const { company } = siteConfig;
     // Soporte para View Transitions
     document.addEventListener('astro:after-swap', () => {
         window.closeMenu();
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                window.closeMenu();
-            }
-        });
     });
 </script>

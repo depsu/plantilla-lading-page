@@ -6,13 +6,12 @@ interface Props {
     align?: 'left' | 'right';
     features?: string[];
     mobileReverse?: boolean; // New prop for mobile ordering
-    id?: string;
 }
 
-const { title, subtitle, image, align = 'left', features, mobileReverse = false, id } = Astro.props;
+const { title, subtitle, image, align = 'left', features, mobileReverse = false } = Astro.props;
 ---
 
-<section id={id} class="py-20 bg-white overflow-hidden">
+<section class="py-20 bg-white overflow-hidden">
     <div class="container mx-auto px-4">
         <div class={`flex flex-col ${mobileReverse ? 'flex-col-reverse' : ''} lg:flex-row items-center gap-12 ${align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
             

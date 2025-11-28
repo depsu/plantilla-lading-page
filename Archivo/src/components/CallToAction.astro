@@ -5,7 +5,6 @@ interface Props {
     ctaText?: string;
     ctaLink?: string;
     bgImage?: string;
-    id?: string;
 }
 
 const { 
@@ -13,12 +12,11 @@ const {
     subtitle = "Contáctanos hoy mismo para una evaluación gratuita.", 
     ctaText = "Contactar Ahora", 
     ctaLink = "/contacto",
-    bgImage,
-    id
+    bgImage 
 } = Astro.props;
 ---
 
-<section id={id} class="relative py-24 bg-blue-600 overflow-hidden">
+<section class="relative py-24 bg-blue-600 overflow-hidden">
     {bgImage && (
         <div class="absolute inset-0 w-full h-full z-0">
             <img src={bgImage} alt="Background" class="w-full h-full object-cover opacity-20 mix-blend-overlay" />

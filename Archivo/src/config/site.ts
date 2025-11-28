@@ -29,11 +29,6 @@ export interface SiteConfig {
         showBlog: boolean;
         showTestimonials: boolean;
     };
-    navLinks: {
-        text: string;
-        href: string;
-        isExternal?: boolean;
-    }[];
 }
 
 export const siteConfig: SiteConfig = {
@@ -64,13 +59,5 @@ export const siteConfig: SiteConfig = {
         showServiceStatus: true,
         showBlog: true,
         showTestimonials: true
-    },
-    navLinks: [
-        { text: "Inicio", href: "#inicio" },
-        { text: "Servicios", href: "#servicios" },
-        { text: "Nosotros", href: "#nosotros" },
-        { text: "Testimonios", href: "#testimonios" },
-        { text: "Preguntas", href: "#faq" },
-        { text: "Contacto", href: "#contacto" }
-    ]
+    }
 };

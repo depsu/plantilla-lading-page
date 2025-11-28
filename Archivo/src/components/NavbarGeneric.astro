@@ -19,15 +19,10 @@ const { company, theme } = siteConfig;
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex items-center gap-8 font-medium text-slate-600">
-                {siteConfig.navLinks.map((link) => (
-                    <a 
-                        href={link.href} 
-                        class="hover:text-primary transition-colors"
-                        target={link.isExternal ? "_blank" : "_self"}
-                    >
-                        {link.text}
-                    </a>
-                ))}
+                <a href="/" class="hover:text-primary transition-colors">Inicio</a>
+                <a href="/servicios" class="hover:text-primary transition-colors">Servicios</a>
+                <a href="/nosotros" class="hover:text-primary transition-colors">Nosotros</a>
+                <a href="/contacto" class="hover:text-primary transition-colors">Contacto</a>
                 
                 <div class="flex items-center gap-4 ml-4">
                     <a href={`https://wa.me/${company.whatsapp}`} class="bg-primary hover:bg-primary-hover text-white px-5 py-2 rounded-full font-bold shadow-md transition hover:-translate-y-0.5 flex items-center gap-2">
@@ -58,16 +53,10 @@ const { company, theme } = siteConfig;
                 </button>
             </div>
             <div class="p-4 space-y-2 overflow-y-auto flex-1">
-                {siteConfig.navLinks.map((link) => (
-                    <a 
-                        href={link.href} 
-                        class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors"
-                        target={link.isExternal ? "_blank" : "_self"}
-                        onclick="toggleGenericMenu()"
-                    >
-                        {link.text}
-                    </a>
-                ))}
+                <a href="/" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Inicio</a>
+                <a href="/servicios" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Servicios</a>
+                <a href="/nosotros" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Nosotros</a>
+                <a href="/contacto" class="block py-3 px-4 rounded-lg hover:bg-slate-100 font-semibold text-slate-900 transition-colors">Contacto</a>
             </div>
         </div>
     </div>
@@ -86,24 +75,4 @@ const { company, theme } = siteConfig;
     if (toggleBtn) toggleBtn.addEventListener('click', toggleGenericMenu);
     if (closeBtn) closeBtn.addEventListener('click', toggleGenericMenu);
     if (backdrop) backdrop.addEventListener('click', toggleGenericMenu);
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Close mobile menu if open
-                if (menu && !menu.classList.contains('hidden')) {
-                    toggleGenericMenu();
-                }
-            }
-        });
-    });
 </script>
